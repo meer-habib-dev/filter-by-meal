@@ -1,0 +1,22 @@
+- run a project using react native cli
+-
+
+resourses
+
+- checkbox - https://www.google.com/imgres?imgurl=https%3A%2F%2Freactnativemaster.com%2Fwp-content%2Fuploads%2F2019%2F11%2Fimage-28-473x1024.png&imgrefurl=https%3A%2F%2Frn-master.com%2Fmultiple-select-checkbox-in-react-native%2F&tbnid=cFswjmwerL2BdM&vet=12ahUKEwixxsi_-7P4AhU0hNgFHfMuBp0QMygRegUIARDnAQ..i&docid=puHDTUzlhBSsXM&w=473&h=1024&q=input%20and%20select%20box%20design%20react%20native&ved=2ahUKEwixxsi_-7P4AhU0hNgFHfMuBp0QMygRegUIARDnAQ
+- input field - https://www.google.com/imgres?imgurl=https%3A%2F%2Fjschris.com%2F41168097024a0b0e7b306a91023114b8%2Fproject.gif&imgrefurl=https%3A%2F%2Fwww.freecodecamp.org%2Fnews%2Fhow-to-build-a-shopping-list-using-react-hooks-w-starter-code-and-video-walkthrough%2F&tbnid=z0v3PzaPeHZ3jM&vet=10CD4QMyiBAWoXChMIwPuOzvuz-AIVAAAAAB0AAAAAEAI..i&docid=kpaWq1HuEVlFiM&w=660&h=574&q=input%20and%20select%20box%20design%20react%20native&ved=0CD4QMyiBAWoXChMIwPuOzvuz-AIVAAAAAB0AAAAAEAI
+
+- background - https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.ytimg.com%2Fvi%2FqEW05hPLdEA%2Fmaxresdefault.jpg&imgrefurl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DqEW05hPLdEA&tbnid=t-HPW7pydxK02M&vet=12ahUKEwi0xYmG_LP4AhUgLrcAHTsuABUQMygQegUIARDiAQ..i&docid=imW3sCvf6a_-pM&w=1280&h=720&q=form%20design%20react%20native&ved=2ahUKEwi0xYmG_LP4AhUgLrcAHTsuABUQMygQegUIARDiAQ
+
+Screens
+
+- Form Screen
+  - Date -> from
+  - Date -> to
+  - status -> active
+  - status -> super active
+  - status -> bored
+- Result Screen
+  - search field
+  - show user
+  - Edit Filter
