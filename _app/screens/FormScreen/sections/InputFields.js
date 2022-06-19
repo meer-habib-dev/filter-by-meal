@@ -28,7 +28,7 @@ const InputFields = ({ onPress }) => {
         <AppButton
           title={"Generate Report"}
           onPress={() => {
-            // status.dateRange && navigation.navigate("UsersScreen");
+            status.dateRange && navigation.navigate("UsersScreen");
             !status.dateRange &&
               toast.show("Date Range Required!", {
                 type: "normal",
@@ -37,7 +37,7 @@ const InputFields = ({ onPress }) => {
                 offset: 30,
                 animationType: "slide-in",
               });
-            onPress();
+            // onPress();
           }}
         />
       </View>

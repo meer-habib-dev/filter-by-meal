@@ -24,19 +24,29 @@ const InputCalendarField = () => {
       typeof endingDate !== "undefined" &&
       _dateRange(startingDate, endingDate);
 
-    const orderedRange =
+    const unorderedRange =
       range &&
       range?.map(
         (date, i) =>
           new Date(date).getFullYear() +
           "-" +
-          new Date(date).getMonth() +
+          parseInt(new Date(date).getMonth() + 1) +
           "-" +
           new Date(date).getDate()
         //   new Date(date).toLocaleDateString();
       );
-    console.log("order", orderedRange);
-    dispatch(setDateRanges(orderedRange));
+    let orderRange = [];
+    unorderedRange &&
+      unorderedRange.map((or) =>
+        orderRange.push(
+          or
+            .split("-")
+            .map((p) => (parseInt(p) <= 9 ? "0" + p : p))
+            .join("-")
+        )
+      );
+    // console.log("order start end range", orderRange);
+    unorderedRange && dispatch(setDateRanges(orderRange));
   }, [startingDate, endingDate]);
   return (
     <View>
@@ -50,7 +60,7 @@ const InputCalendarField = () => {
             }}
             style={styles.input}
             placeholder="From"
-            // editable
+            editable={false}
             defaultValue={startingDate}
           />
         </View>
@@ -86,7 +96,7 @@ const InputCalendarField = () => {
               }}
               style={[styles.input, { zIndex: -999 }]}
               placeholder="To"
-              //   editable
+              editable={false}
               defaultValue={endingDate}
             />
           </View>

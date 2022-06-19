@@ -25,25 +25,10 @@ const UsersScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const d = [
-      "2016-09-01",
-      "2016-09-02",
-      "2016-09-03",
-      "2016-09-04",
-      "2016-09-05",
-      "2016-09-06",
-      "2016-09-07",
-      "2016-09-08",
-    ];
-    console.log(
-      "date range",
-      dateRange,
-      searchTerm
-    );
     const mealDays = usersData.map((user) => user.calendar.dateToDayId);
     const dateId =
       dateRange && mealDays.map((dt) => dateRange?.map((dd) => dt[dd]));
-    // console.log("dateId", dateRange);
+    
     const meals = usersData.map((user) => user.calendar.daysWithDetails);
     const meal =
       dateId && meals.map((meal) => dateId.map((i) => i?.map((a) => meal[a])));
@@ -62,7 +47,7 @@ const UsersScreen = () => {
     const sum =
       output && output.map((a, index) => a[index]?.reduce((a, b) => a + b, 0));
     const sm = sum && sum.map((sm, i) => (usersData[i].mealTaken = sm));
-    // console.log("meal num", usersData[0].mealTaken);
+    console.log("meal num", usersData[0].mealTaken);
   }, [dateRange]);
 
   useEffect(() => {
