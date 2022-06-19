@@ -14,54 +14,36 @@ import { usersData } from "../../utils/config/users";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
-import { setSearchTerm } from "../../redux/slices/inputSlice";
+import { _setMealAndDateId } from "../../utils/_helpers/_setMealAndDateIds";
 
 const UsersScreen = () => {
   const [users, setUsers] = useState(usersData);
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
   const status = useSelector((state) => state.input);
-  const { active, superActive, bored, dateRange, searchTerm } = status;
+  const { active, superActive, bored, dateRange } = status;
 
   const navigation = useNavigation();
+  
 
-  useEffect(() => {
-    const mealDays = usersData.map((user) => user.calendar.dateToDayId);
-    const dateId =
-      dateRange && mealDays.map((dt) => dateRange?.map((dd) => dt[dd]));
-    
-    const meals = usersData.map((user) => user.calendar.daysWithDetails);
-    const meal =
-      dateId && meals.map((meal) => dateId.map((i) => i?.map((a) => meal[a])));
-    const output =
-      dateRange &&
-      meal.map((i) =>
-        i.map((j) =>
-          j.map(
-            (k) =>
-              Object.keys(
-                typeof k !== "undefined" && k?.details?.mealsWithDetails
-              ).length
-          )
-        )
-      );
-    const sum =
-      output && output.map((a, index) => a[index]?.reduce((a, b) => a + b, 0));
-    const sm = sum && sum.map((sm, i) => (usersData[i].mealTaken = sm));
-    console.log("meal num", usersData[0].mealTaken);
-  }, [dateRange]);
+  const updatedUserData = _setMealAndDateId(dateRange);
+  // }, [dateRange]);
+  console.log("users", updatedUserData[0]);
 
   useEffect(() => {
     // const filtered = user.filter(us => )
     if (searchTerm !== "") {
-      const filter = usersData.filter((user) =>
-        Object.values(user.profile.name)
-          .join("")
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase())
-      );
-      setUsers(filter);
+      const filteredUser =
+        typeof updatedUserData[0] !== "undefined" &&
+        updatedUserData.filter((user) =>
+          Object.values(user.profile.name)
+            .join("")
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase())
+        );
+      setUsers(filteredUser);
     } else {
-      setUsers(usersData);
+      setUsers(updatedUserData);
     }
     // console.log("besi naki kom", filter);
   }, [searchTerm]);
@@ -73,7 +55,7 @@ const UsersScreen = () => {
         <TextInput
           placeholder="Search By Name"
           style={styles.input}
-          onChangeText={(e) => dispatch(setSearchTerm(e))}
+          onChangeText={(e) => setSearchTerm(e)}
         />
         <TouchableOpacity
           style={styles.filter}
