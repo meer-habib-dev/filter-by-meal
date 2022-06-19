@@ -1,125 +1,46 @@
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import React, { useState } from "react";
-import DatePicker from "react-native-styled-datepicker";
-import { AntDesign } from "@expo/vector-icons";
-import { CheckBox } from "@rneui/themed";
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 import AppButton from "../../../components/AppButton";
 import { useNavigation } from "@react-navigation/native";
-const status = [
-  { id: 0, status: "Active", checked: false },
-  { id: 1, status: "Super Active", checked: false },
-  { id: 2, status: "Bored", checked: false },
-];
-const InputFields = () => {
-  const [openCalendar, setOpenCalendar] = useState(false);
-  const [endcalendar, setEndcalendar] = useState(false);
-  const [startingDate, setStartingDate] = useState();
-  const [endingDate, setEndingDate] = useState();
-  const [checkbox1, setCheckbox1] = useState(status);
-  const [checkbox2, setCheckbox2] = useState(status);
-  const [checkbox3, setCheckbox3] = useState(status);
+import CheckboxField from "./CheckboxField";
+import InputCalendarField from "./InputCalendarField";
+import { useSelector } from "react-redux";
+import { useToast } from "react-native-toast-notifications";
+
+const InputFields = ({ onPress }) => {
   const navigation = useNavigation();
+  const status = useSelector((state) => state.input);
+  const toast = useToast();
+
   return (
     <View style={styles.fieldContainer}>
-      <Text style={styles.text}>Pick Dates</Text>
-      <View style={styles.formDate}>
-        <TextInput
-          onFocus={() => setOpenCalendar(true)}
-          onPressIn={() => setOpenCalendar(true)}
-          onBlur={() => {
-            console.log("callig"), setOpenCalendar(false);
+      <Text style={styles.text}>USER ANALYZER</Text>
+      <View>
+        <Text style={styles.title}>Date Range:</Text>
+        <InputCalendarField />
+      </View>
+      <View style={styles.checksContainer}>
+        <Text style={styles.title}>Status:</Text>
+        <CheckboxField />
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <AppButton
+          title={"Generate Report"}
+          onPress={() => {
+            // status.dateRange && navigation.navigate("UsersScreen");
+            !status.dateRange &&
+              toast.show("Date Range Required!", {
+                type: "normal",
+                placement: "bottom",
+                duration: 4000,
+                offset: 30,
+                animationType: "slide-in",
+              });
+            onPress();
           }}
-          style={styles.input}
-          placeholder="From"
-          editable
-          defaultValue={startingDate}
         />
       </View>
-      <View style={styles.formDate}>
-        <TextInput
-          onFocus={() => setEndcalendar(true)}
-          onPressIn={() => setEndcalendar(true)}
-          onBlur={() => {
-            console.log("callig"), setEndcalendar(false);
-          }}
-          style={styles.input}
-          placeholder="From"
-          editable
-          defaultValue={endingDate}
-        />
-      </View>
-      {openCalendar && (
-        <DatePicker
-          onChange={(e) => {
-            setStartingDate(e);
-            setOpenCalendar(false);
-          }}
-        />
-      )}
-      {endcalendar && (
-        <DatePicker
-          onChange={(e) => {
-            setEndingDate(e);
-            setEndcalendar(false);
-          }}
-        />
-      )}
-
-      <TouchableOpacity style={styles.checkboxContainer}>
-        <CheckBox
-          title={"Active"}
-          checked={checkbox1}
-          // checked={index === acitveIndex ? true : false}
-          onPress={() => {
-            setCheckbox1(!checkbox1);
-          }}
-          containerStyle={{
-            backgroundColor: "orange",
-            paddingVertical: 5,
-          }}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.checkboxContainer}>
-        <CheckBox
-          title={"Super Active"}
-          checked={checkbox2}
-          // checked={index === acitveIndex ? true : false}
-          onPress={() => {
-            setCheckbox2(!checkbox2);
-          }}
-          containerStyle={{
-            backgroundColor: "orange",
-            paddingVertical: 5,
-          }}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.checkboxContainer}>
-        <CheckBox
-          title={"Bored"}
-          checked={checkbox3}
-          // checked={index === acitveIndex ? true : false}
-          onPress={() => {
-            setCheckbox3(!checkbox3);
-          }}
-          containerStyle={{
-            backgroundColor: "orange",
-
-            paddingVertical: 5,
-          }}
-        />
-      </TouchableOpacity>
-
-      <AppButton
-        title={"Generate Report"}
-        onPress={() => navigation.navigate("UsersScreen")}
-      />
     </View>
   );
 };
@@ -136,21 +57,22 @@ const styles = StyleSheet.create({
   },
   text: {
     marginVertical: 10,
+    fontSize: 24,
+    textAlign: "center",
+    fontWeight: "bold",
   },
-  input: {
-    borderWidth: 1,
-    borderColor: "gray",
-    padding: 10,
-    borderRadius: 10,
+  title: {
+    fontWeight: "bold",
   },
-  formDate: {
-    marginVertical: 10,
+  checksContainer: {
+    zIndex: -1,
+    marginTop: 10,
   },
-  checkboxContainer: {
+  buttonContainer: {
+    position: "absolute",
     width: "100%",
-    backgroundColor: "orange",
-    marginVertical: 10,
-    borderRadius: 50,
-    textAlign: "left",
+    bottom: 20,
+    marginHorizontal: 20,
+    zIndex: -1,
   },
 });

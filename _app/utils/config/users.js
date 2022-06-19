@@ -1,4 +1,4 @@
-const userData = [
+export const usersData = [
   {
     profile: {
       pictureUrl:
@@ -49159,7 +49159,7 @@ const userData = [
   {
     profile: {
       pictureUrl:
-        "hhttps://loremflickr.com/cache/resized/6069_6051221795_105b4bb712_320_240_nofilter.jpg",
+        "https://loremflickr.com/cache/resized/6069_6051221795_105b4bb712_320_240_nofilter.jpg",
       name: "Taylor Gondor",
     },
     calendar: {
@@ -56980,7 +56980,7 @@ const userData = [
   {
     profile: {
       pictureUrl:
-        "ttps://loremflickr.com/cache/resized/6069_6051221795_105b4bb712_320_240_nofilter.jpg",
+        "https://loremflickr.com/cache/resized/6069_6051221795_105b4bb712_320_240_nofilter.jpg",
       name: "Vijaya Pandit",
     },
     calendar: {

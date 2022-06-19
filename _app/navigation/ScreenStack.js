@@ -9,7 +9,7 @@ const ScreenStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="HomeScreen"
         component={FormScreen}
         options={{
           headerShown: false,

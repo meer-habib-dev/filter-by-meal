@@ -20,3 +20,50 @@ Screens
   - search field
   - show user
   - Edit Filter
+    select filter to generate report react native
+
+Bugs and fixes
+
+- fix calendar
+- optimze input field
+- optimze calendar
+- add content to home
+- fix user screen
+- add search functionality
+- add filtering functionality
+- make code optimize
+
+here are the logics and my thought process of doing filtering
+
+- on a specific date range i have to some some users
+- within those users i have to filter out active, super active and border users
+- and i will define the status of users based on the amount of meal that those users have.
+- more than 10 will consider as super active
+- less then 5 consider as active
+- and border who are not active in specific peroid but active in peceding peroid
+
+questions
+
+- what is preceding peroid
+
+  > > steps to gain the output from my app...
+
+- 1st
+  > > get the date ranges (starting to ending - by using input field calendar) | can be an array of date
+- 2nd
+  > > map through the users array
+  > > get the meal or dateToDayid of all users
+  > > based on the search input date ranges get the date id from dateToDayId
+  > > then filter out the specific users that matches with the daysWithDetails id with dateToDayID
+- 3rd
+
+  > > now the users that we get on those date range (dateToDayId)
+  > > we will calculate the length of meals that they take on different dates
+  > > based on the amount of numbers so the output
+
+      to
+
+ 
+
+ problems:
+ - 
