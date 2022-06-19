@@ -33,7 +33,6 @@ const InputCalendarField = () => {
           parseInt(new Date(date).getMonth() + 1) +
           "-" +
           new Date(date).getDate()
-        //   new Date(date).toLocaleDateString();
       );
     let orderRange = [];
     unorderedRange &&
@@ -45,7 +44,7 @@ const InputCalendarField = () => {
             .join("-")
         )
       );
-    // console.log("order start end range", orderRange);
+
     unorderedRange && dispatch(setDateRanges(orderRange));
   }, [startingDate, endingDate]);
   return (
@@ -53,7 +52,6 @@ const InputCalendarField = () => {
       <View style={styles.startContainer}>
         <View style={styles.formDate}>
           <TextInput
-            // onFocus={() => setOpenCalendar(true)}
             onPressIn={() => setOpenCalendar(!openCalendar)}
             onBlur={() => {
               setOpenCalendar(false);
@@ -89,7 +87,6 @@ const InputCalendarField = () => {
         {!openCalendar && (
           <View style={[styles.formDate]}>
             <TextInput
-              //   onFocus={() => setEndcalendar(true)}
               onPressIn={() => setEndcalendar(!endcalendar)}
               onBlur={() => {
                 setEndcalendar(false);

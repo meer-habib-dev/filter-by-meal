@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  searchTerm: "",
   startDate: "",
   endDate: "",
   dateRange: [],
@@ -14,9 +13,6 @@ export const inputSlice = createSlice({
   name: "input",
   initialState,
   reducers: {
-    setSearchTerm: (state, action) => {
-      state.searchTerm = action.payload;
-    },
     setStartDate: (state, action) => {
       state.startDate = action.payload;
     },
@@ -40,7 +36,6 @@ export const inputSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-  setSearchTerm,
   setEndDate,
   setStartDate,
   setDateRanges,

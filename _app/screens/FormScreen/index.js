@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { useEffect } from "react";
+import { StyleSheet, View } from "react-native";
+import React from "react";
 import InputFields from "./sections/InputFields";
 import { useSelector } from "react-redux";
 
 const FormScreen = () => {
-  const status = useSelector((state) => state.input);
-
   return (
     <View style={styles.container}>
       <InputFields />

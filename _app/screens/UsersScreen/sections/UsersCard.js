@@ -1,18 +1,9 @@
-import {
-  Image,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { usersData } from "../../../utils/config/users";
+import { Image, StyleSheet, Text, View } from "react-native";
+import React from "react";
 
 const UsersCard = ({ user, mealTaken }) => {
   //   user.mealTaken = mealTaken;
-  
+
   return (
     <View style={styles.container}>
       <View>
@@ -42,11 +33,6 @@ const UsersCard = ({ user, mealTaken }) => {
             styles.mealContainer,
             {
               backgroundColor: "#FF7F50",
-              // user?.mealTaken >= 10
-              //   ? "tomato"
-              //   : user?.mealTaken < 10 && user?.mealTaken >= 5
-              //   ? "green"
-              //   : user?.mealTaken < 5 && "red",
             },
           ]}
         >

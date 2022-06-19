@@ -1,11 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { CheckBox } from "@rneui/themed";
 import { useDispatch } from "react-redux";
 import {
   setActive,
   setBored,
-  setCheckbox,
   setSuperActive,
 } from "../../../redux/slices/inputSlice";
 import { useSelector } from "react-redux";
@@ -24,7 +23,6 @@ const CheckboxField = () => {
           title={"Active"}
           checked={checkbox1 || active !== 0}
           checkedColor="orange"
-          // checked={index === acitveIndex ? true : false}
           onPress={() => {
             setCheckbox1(!checkbox1);
             dispatch(setActive(!checkbox1 ? 10 : 0));
@@ -40,7 +38,6 @@ const CheckboxField = () => {
           title={"Super Active"}
           checked={checkbox2 || superActive !== 0}
           checkedColor="orange"
-          // checked={index === acitveIndex ? true : false}
           onPress={() => {
             setCheckbox2(!checkbox2);
             dispatch(setSuperActive(!checkbox2 ? 10 : 0));
@@ -56,7 +53,6 @@ const CheckboxField = () => {
           title={"Bored"}
           checked={checkbox3 || bored !== 0}
           checkedColor="orange"
-          // checked={index === acitveIndex ? true : false}
           onPress={() => {
             setCheckbox3(!checkbox3);
             dispatch(setBored(!checkbox3 ? 5 : 0));

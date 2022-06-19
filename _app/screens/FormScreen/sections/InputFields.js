@@ -7,7 +7,7 @@ import InputCalendarField from "./InputCalendarField";
 import { useSelector } from "react-redux";
 import { useToast } from "react-native-toast-notifications";
 
-const InputFields = ({ onPress }) => {
+const InputFields = ({}) => {
   const navigation = useNavigation();
   const status = useSelector((state) => state.input);
   const toast = useToast();
@@ -28,8 +28,9 @@ const InputFields = ({ onPress }) => {
         <AppButton
           title={"Generate Report"}
           onPress={() => {
-            status.dateRange && navigation.navigate("UsersScreen");
-            !status.dateRange &&
+            typeof status.dateRange[0] !== "undefined" &&
+              navigation.navigate("UsersScreen");
+            typeof status.dateRange[0] === "undefined" &&
               toast.show("Date Range Required!", {
                 type: "normal",
                 placement: "bottom",
@@ -37,7 +38,6 @@ const InputFields = ({ onPress }) => {
                 offset: 30,
                 animationType: "slide-in",
               });
-            // onPress();
           }}
         />
       </View>

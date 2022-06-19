@@ -13,25 +13,22 @@ import UsersCard from "./sections/UsersCard";
 import { usersData } from "../../utils/config/users";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import { useDispatch } from "react-redux";
 import { _setMealAndDateId } from "../../utils/_helpers/_setMealAndDateIds";
 
 const UsersScreen = () => {
   const [users, setUsers] = useState(usersData);
   const [searchTerm, setSearchTerm] = useState("");
-  const dispatch = useDispatch();
+
   const status = useSelector((state) => state.input);
   const { active, superActive, bored, dateRange } = status;
 
   const navigation = useNavigation();
-  
 
   const updatedUserData = _setMealAndDateId(dateRange);
-  // }, [dateRange]);
+
   console.log("users", updatedUserData[0]);
 
   useEffect(() => {
-    // const filtered = user.filter(us => )
     if (searchTerm !== "") {
       const filteredUser =
         typeof updatedUserData[0] !== "undefined" &&
@@ -45,7 +42,6 @@ const UsersScreen = () => {
     } else {
       setUsers(updatedUserData);
     }
-    // console.log("besi naki kom", filter);
   }, [searchTerm]);
 
   return (
